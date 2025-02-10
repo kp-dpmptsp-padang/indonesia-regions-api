@@ -15,4 +15,4 @@ app.get("/provinces/:id", (req, res) => {
   else res.status(404).json({ message: "Province not found" });
 });
 
-app.listen(5000, () => console.log("http://localhost:5000"));
+app.listen(4000, () => console.log("http://localhost:4000"));
