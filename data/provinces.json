@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Nanggroe Aceh Darussalam",
+    "name": "Aceh",
     "cities": [
       { "id": 101, "name": "Banda Aceh" },
       { "id": 102, "name": "Lhokseumawe" },
