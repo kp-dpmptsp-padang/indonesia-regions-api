@@ -15,4 +15,4 @@ app.get("/provinces/:id", (req, res) => {
   else res.status(404).json({ message: "Province not found" });
 });
 
-app.listen(4000, () => console.log("http://localhost:4000"));
+app.listen(4000, () => console.log("API is running on port 4000"));
