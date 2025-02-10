@@ -1,0 +1,17 @@
+{
+  "name": "indonesia-regions-api",
+  "version": "1.0.0",
+  "description": "RESTful API for retrieving provinces and cities data in Indonesia.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
