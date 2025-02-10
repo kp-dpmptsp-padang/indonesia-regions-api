@@ -1,48 +1,24 @@
 # 🇮🇩 API Wilayah Indonesia
 
-API sederhana untuk data provinsi dan kota/kabupaten di Indonesia yang mencakup 38 provinsi termasuk pemekaran terbaru.
+API gratis untuk data wilayah administratif Indonesia yang mencakup data provinsi dan kota/kabupaten. API ini dapat digunakan untuk berbagai keperluan seperti formulir pendaftaran, sistem informasi, atau aplikasi yang membutuhkan data wilayah Indonesia.
 
-## 📝 Deskripsi
+## 🚀 Base URL
 
-Repository ini menyediakan REST API sederhana untuk mengakses data wilayah administratif Indonesia. Data mencakup 38 provinsi beserta kota dan kabupaten di dalamnya dalam format JSON.
-
-## 💻 Teknologi yang Digunakan
-
-- Node.js
-- Express.js
-- CORS
-
-## 🚀 Cara Menjalankan
-
-1. Clone repository ini
-```bash
-git clone https://github.com/kp-dpmptsp-padang/indonesia-regions-api.git
+```
+https://indonesia-regions-api.vercel.app
 ```
 
-2. Install dependencies
-```bash
-cd api-wilayah-indonesia
-npm install
-```
+## 📚 Dokumentasi Endpoint
 
-3. Jalankan server
-```bash
-nodemon server.js
-```
+### 1. Mendapatkan Semua Provinsi
 
-Server akan berjalan di `http://localhost:3000`
-
-## 📚 Dokumentasi API
-
-### Endpoints
-
-#### 1. Mendapatkan Semua Provinsi
+Mengambil daftar seluruh provinsi di Indonesia.
 
 ```http
 GET /provinces
 ```
 
-Response:
+**Response Success (200):**
 ```json
 [
   {
@@ -53,20 +29,37 @@ Response:
         "id": 101,
         "name": "Kota Banda Aceh"
       },
-      // ...
+      {
+        "id": 102,
+        "name": "Kota Langsa"
+      }
     ]
   },
-  // ...
+  {
+    "id": 2,
+    "name": "Sumatera Utara",
+    "cities": [
+      {
+        "id": 201,
+        "name": "Kota Medan"
+      }
+    ]
+  }
 ]
 ```
 
-#### 2. Mendapatkan Provinsi Berdasarkan ID
+### 2. Mendapatkan Provinsi Berdasarkan ID
+
+Mengambil data provinsi spesifik berdasarkan ID.
 
 ```http
-GET /provinces/:id
+GET /provinces/{id}
 ```
 
-Response Success:
+**Parameter:**
+- `id` (number) - ID provinsi yang ingin diambil
+
+**Response Success (200):**
 ```json
 {
   "id": 1,
@@ -76,62 +69,75 @@ Response Success:
       "id": 101,
       "name": "Kota Banda Aceh"
     },
-    // ...
+    {
+      "id": 102,
+      "name": "Kota Langsa"
+    }
   ]
 }
 ```
 
-Response Error (404):
+**Response Error (404):**
 ```json
 {
   "message": "Province not found"
 }
 ```
 
-## 📦 Struktur Project
+## 💻 Contoh Penggunaan
 
-```
-api-wilayah-indonesia/
-├── server.js
-├── package.json
-├── data/
-│   └── provinces.json
-└── README.md
+### Menggunakan Fetch (JavaScript)
+
+```javascript
+// Mengambil semua provinsi
+fetch('https://indonesia-regions-api.vercel.app/provinces')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+// Mengambil provinsi berdasarkan ID
+fetch('https://indonesia-regions-api.vercel.app/provinces/1')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
 ```
 
-## 🔧 Dependencies
+### Menggunakan Axios (JavaScript)
 
-```json
-{
-  "dependencies": {
-    "express": "^4.17.1",
-    "cors": "^2.8.5",
-    "nodemon": "^3.1.9"
-  }
-}
+```javascript
+import axios from 'axios';
+
+// Mengambil semua provinsi
+axios.get('https://indonesia-regions-api.vercel.app/provinces')
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));
+
+// Mengambil provinsi berdasarkan ID
+axios.get('https://indonesia-regions-api.vercel.app/provinces/1')
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));
 ```
+
+## ⚡ Rate Limiting
+
+API ini bersifat gratis dan public, namun memiliki batasan rate limiting untuk menjaga kestabilan layanan. Mohon gunakan dengan bijak.
 
 ## 🤝 Kontribusi
 
-Kontribusi sangat diterima! Jika Anda menemukan kesalahan data atau ingin menambahkan fitur:
+API ini bersifat open source. Jika Anda menemukan bug atau ingin berkontribusi, silakan buat issue atau pull request di repository GitHub kami.
 
-1. Fork repository ini
-2. Buat branch baru (`git checkout -b feature/UpdateData`)
-3. Commit perubahan (`git commit -m 'Menambahkan data baru'`)
-4. Push ke branch (`git push origin feature/UpdateData`)
-5. Buat Pull Request
+## 📝 Catatan
 
-
-## ✨ Contributors
-
-- Mustafa Fathur Rahman
-- Khalied Nauly Maturino
+- API ini disediakan secara gratis dan dapat digunakan untuk keperluan development
+- Data yang disediakan mencakup 38 provinsi di Indonesia termasuk pemekaran terbaru
+- Gunakan API dengan bijak dan pastikan untuk menerapkan caching di sisi client untuk mengurangi beban server
 
 ## 📞 Kontak
 
-Jika Anda memiliki pertanyaan atau saran, silakan buka issue baru atau hubungi kami di:
+Jika Anda memiliki pertanyaan atau menemukan masalah, silakan hubungi kami melalui:
 - Email: khalidmaturino@gmail.com
+- GitHub Issues: [Buat Issue Baru](https://github.com/kp-dpmptsp-padang/indonesia-regions-api/issues)
 
 ## ⭐ Dukung Kami
 
-Jika Anda merasa API ini bermanfaat, berikan ⭐️ pada repository ini!
+Jika API ini bermanfaat untuk Anda, mohon berikan stargazer di repository GitHub kami dan bagikan ke rekan developer lainnya!
