@@ -1,9 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path"); // Tambahkan ini
 const provinces = require("./data/provinces.json");
 
 const app = express();
 app.use(cors());
+
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, "public"))); // Tambahkan ini
 
 // Serve documentation at root URL
 app.get("/", (req, res) => {
