@@ -5,6 +5,11 @@ const provinces = require("./data/provinces.json");
 const app = express();
 app.use(cors());
 
+// Serve documentation at root URL
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 app.get("/provinces", (req, res) => {
   res.json(provinces);
 });

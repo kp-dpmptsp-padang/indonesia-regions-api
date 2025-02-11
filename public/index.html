@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Wilayah Indonesia - Dokumentasi</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #ff0000;
+        --secondary-color: #ffffff;
+        --text-color: #333333;
+        --code-bg: #2d2d2d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background: #f5f5f5;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      header {
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        color: var(--primary-color);
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 1rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      .endpoint {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .method {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 4px;
+        background: #28a745;
+        color: white;
+        font-weight: bold;
+        margin-right: 1rem;
+      }
+
+      .url {
+        font-family: monospace;
+        background: var(--code-bg);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 4px;
+      }
+
+      pre {
+        background: var(--code-bg);
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+
+      code {
+        font-family: monospace;
+      }
+
+      .response-example {
+        margin-top: 1rem;
+      }
+
+      .flag {
+        font-size: 2rem;
+        margin-right: 1rem;
+        vertical-align: middle;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .header-content {
+          padding: 0 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1><span class="flag">🇮🇩</span> API Wilayah Indonesia</h1>
+        <p>API gratis untuk data provinsi dan kota/kabupaten di Indonesia</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <section>
+        <h2>Base URL</h2>
+        <div class="endpoint">
+          <code class="url">https://indonesia-regions-api.vercel.app</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>Endpoints</h2>
+
+        <div class="endpoint">
+          <h3>1. Mendapatkan Semua Provinsi</h3>
+          <p>
+            <span class="method">GET</span>
+            <code class="url">/provinces</code>
+          </p>
+          <div class="response-example">
+            <h4>Response:</h4>
+            <pre><code class="language-json">[
+  {
+    "id": 1,
+    "name": "Aceh",
+    "cities": [
+      {
+        "id": 101,
+        "name": "Kota Banda Aceh"
+      }
+    ]
+  }
+]</code></pre>
+          </div>
+        </div>
+
+        <div class="endpoint">
+          <h3>2. Mendapatkan Provinsi Berdasarkan ID</h3>
+          <p>
+            <span class="method">GET</span>
+            <code class="url">/provinces/{id}</code>
+          </p>
+          <div class="response-example">
+            <h4>Response Success:</h4>
+            <pre><code class="language-json">{
+  "id": 1,
+  "name": "Aceh",
+  "cities": [
+    {
+      "id": 101,
+      "name": "Kota Banda Aceh"
+    }
+  ]
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Contoh Penggunaan</h2>
+        <div class="endpoint">
+          <h3>Menggunakan Fetch</h3>
+          <pre><code class="language-javascript">// Mengambil semua provinsi
+fetch('https://indonesia-regions-api.vercel.app/provinces')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));</code></pre>
+        </div>
+
+        <div class="endpoint">
+          <h3>Menggunakan Axios</h3>
+          <pre><code class="language-javascript">import axios from 'axios';
+
+// Mengambil provinsi berdasarkan ID
+axios.get('https://indonesia-regions-api.vercel.app/provinces/1')
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Catatan</h2>
+        <div class="endpoint">
+          <ul>
+            <li>
+              API ini bersifat gratis dan dapat digunakan untuk keperluan
+              development
+            </li>
+            <li>
+              Data mencakup 38 provinsi di Indonesia termasuk pemekaran terbaru
+            </li>
+            <li>
+              Gunakan API dengan bijak dan terapkan caching untuk mengurangi
+              beban server
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Kontak</h2>
+        <div class="endpoint">
+          <p>Email: khalidmaturino@gmail.com</p>
+          <p>
+            GitHub:
+            <a
+              href="https://github.com/kp-dpmptsp-padang/indonesia-regions-api"
+              target="_blank"
+              >indonesia-regions-api</a
+            >
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  </body>
+</html>
